@@ -1,0 +1,1 @@
+{"name":"auth2","author":"SamsonOS","version":"0.0.1","require":{"ActiveRecord":"*.*.*","SamsonJS":"*.*.*","md5":"*.*.*"}}

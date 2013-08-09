@@ -1,0 +1,53 @@
+/* Старая верстка - изменим режим расчета размеров */
+#auth2 *, #auth * { box-sizing:content-box; -webkit-box-sizing:content-box; }
+/* Принудительно растянем высоту тела страницы */
+body { height:100%; }
+
+/* Таблица для вертикального центирования */
+#auth2 table.full_table { width:100%; height:100%; font-family: "Tahoma"; overflow: hidden; background-color: #b2b2b2; }
+
+/* Форма для отправки данных на сервер */
+#auth2 form {display:none; }
+
+/* Внешний контейнер формы */
+#auth2 .auth 						{ width: 738px; padding:0 9px 18px 9px;  }
+#auth2 .auth 						{ background-color: #e6e6e6; border-radius:4px; box-shadow: 0px 0px 10px #7f7f7f;}
+#auth2 .auth 						{ display: block; margin:0 auto; }
+
+/* Внутренний контейнер формы */
+#auth2 .auth .form					{ border:1px solid #b3b3b3; border-radius:4px; background-color: white; clear:both; } 
+
+/* Заголовок формы */
+#auth2 .auth H1 					{ float:left; height: 36px; font-size:16pt; padding:18px 0 0 0; font-family: "Trebuchet MS"}
+
+/* Логотип сайта */
+#auth2 .auth .logo					{ float:right; height: 36px;  width:140px; padding:18px 0 0 0;  }
+#auth2 .auth .logo IMG				{ float:right; }
+
+/* Картинка загрущика */
+#auth2 .loader { display:none; }
+
+/* Само тело формы */
+#auth2 .form-body { padding: 36px 0 ; }
+
+/* Стиль для кнопок формы */
+#auth2 .auth-button { margin: 0 5px; height:26px; width:70px; }
+
+/* Стилизируем элементы формы */
+#auth2 .table-like-list label { line-height:38px; width: 243px; font-size:16px; text-align: right; }
+#auth2 .table-like-list li { height: 40px; }
+
+/* Стилизируем поля ввода */
+#auth2 #Email, #auth2 #Password { width: 336px;   height:26px; font-size: 14px;  } 
+#auth2 .input-text { width: 336px; height: 26px;  }
+
+#auth2 li.loader img { position:relative; top: -35px; left: 25px; }
+#auth2 li.loader  { min-height:0px;height:0px; } 
+
+/* Стиль для строки с паролем */
+#auth2 .password-row { display:none; }
+
+/* Стиль для выделения ошибки авторизации */
+#auth2 .login-error { color: darkred; text-decoration: underline; }
+/* Стиль для выделения успешной авторизации */
+#auth2 .login-success { color: green; text-decoration: underline; }
