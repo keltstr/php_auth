@@ -14,7 +14,9 @@
 		<table class="full_table"><tr><td>
 		<div class="auth">
 			<h1 id="formHeader">Войти в систему</h1>
-			<div class="logo" title="Система управления сайтом - SamsonCMS"><?php v('logo');?></div>									
+			<?php if(isv('logo')):?>
+				<div class="logo" title="Система управления сайтом - SamsonCMS"><?php v('logo');?></div>
+			<?php endif?>									
 			<div class="form">				
 				<ul class="table-like-list form-body">
 					<li class="tll-classic email-row">

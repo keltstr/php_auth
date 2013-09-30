@@ -31,7 +31,7 @@ body { height:100%; }
 #auth2 .form-body { padding: 36px 0 ; }
 
 /* Стиль для кнопок формы */
-#auth2 .auth-button { margin: 0 5px; height:26px; width:70px; }
+#auth2 .auth-button { margin: 0 5px; height:34px; width:70px; }
 
 /* Стилизируем элементы формы */
 #auth2 .table-like-list label { line-height:38px; width: 243px; font-size:16px; text-align: right; }
