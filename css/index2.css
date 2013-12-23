@@ -1,7 +1,7 @@
 /* —тара€ верстка - изменим режим расчета размеров */
 #auth2 *, #auth * { box-sizing:content-box; -webkit-box-sizing:content-box; }
 /* ѕринудительно раст€нем высоту тела страницы */
-body { height:100%; }
+#auth2 { height:100%; }
 
 /* “аблица дл€ вертикального центировани€ */
 #auth2 table.full_table { width:100%; height:100%; font-family: "Tahoma"; overflow: hidden; background-color: #b2b2b2; }
