@@ -3,9 +3,9 @@
  * Auth(Authorization) - Авторизация получить объект для работы с авторизацией
  * пользователя
  *
- * @return Authorization Объект для работы с авторизацией пользователя
+ * @return \samson\auth\Auth Объект для работы с авторизацией пользователя
  */
-function & auth(){	static $_v;	return ( $_v = isset($_v) ? $_v : \samson\auth\auth::getInstance('auth')); }
+function & auth(){	static $_v;	return ( $_v = isset($_v) ? $_v : \samson\auth\auth::getInstance(ns_classname('auth','samson\auth'))); }
 
 /**
  * Функция для проверки авторизации пользователя на сайте и вслучаии её отсутствия перенапраление

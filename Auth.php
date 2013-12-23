@@ -12,48 +12,49 @@ use samson\core\CompressableService;
  */ 
 class Auth extends CompressableService
 {
-	/** Реальный идентификатор файлов модуля */
-	protected $id = 'auth2';
-	
-	/** Список модулей от которых завист данный модуль */
-	protected $requirements = array
-	(
-		'ActiveRecord',
-		'SamsonJS',
-		'md5'
-	);
-	
-	/** Имя сущности в БД с которой должен работать модуль */
-	public $entity = 'user';
-	
-	/** Флаг принудительной авторизации на сайте */
-	public $force = FALSE;
-	
-	/**	Имя поля для e-mail в таблице БД	*/
-	public $email = 'md5_Email';
-	
-	/** Имя поля для пароля в таблице БД */
-	public $password = 'md5_Password';
-	
-	/** Флаг авторизирован ли пользователь в системе */
-	public $authorized = FALSE; 		
-	/** 
-	 * Указатель на текущего пользователь
-	 * @var dbRecord
-	 */
-	public $user;	
-	
-	/** Внешний обработчик который выполняется перед инициализацией модуля авторизации */
-	public $init_handler;
-	
-	/** Внешний обработчик успешной авторизации пользователя */
-	public $login_handler;
-	
-	/** Внешний обработчик выхода пользователя */
-	public $logout_handler;
-	
-	/** Маркер для хранения указателя на данные в сессии */
-	private $session_marker;	
+    /** Реальный идентификатор файлов модуля */
+    protected $id = 'auth2';
+
+    /** Список модулей от которых завист данный модуль */
+    protected $requirements = array
+    (
+        'ActiveRecord',
+        'SamsonJS',
+        'md5'
+    );
+
+    /** Имя сущности в БД с которой должен работать модуль */
+    public $entity = 'user';
+
+    /** Флаг принудительной авторизации на сайте */
+    public $force = FALSE;
+
+    /**	Имя поля для e-mail в таблице БД	*/
+    public $email = 'md5_Email';
+
+    /** Имя поля для пароля в таблице БД */
+    public $password = 'md5_Password';
+
+    /** Флаг авторизирован ли пользователь в системе */
+    public $authorized = FALSE;
+
+    /**
+     * Указатель на текущего пользователь
+     * @var \samson\activerecord\dbRecord
+     */
+    public $user;
+
+    /** Внешний обработчик который выполняется перед инициализацией модуля авторизации */
+    public $init_handler;
+
+    /** Внешний обработчик успешной авторизации пользователя */
+    public $login_handler;
+
+    /** Внешний обработчик выхода пользователя */
+    public $logout_handler;
+
+    /** Маркер для хранения указателя на данные в сессии */
+    private $session_marker;
 
 	
 	/** @see \samson\core\ModuleConnector::init() */
