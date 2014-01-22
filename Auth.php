@@ -53,6 +53,9 @@ class Auth extends CompressableService
     /** Внешний обработчик выхода пользователя */
     public $logout_handler;
 
+    /** Внешний обработчик принудительной авторизации */
+    public $force_handler;
+
     /** Маркер для хранения указателя на данные в сессии */
     private $session_marker;
 
@@ -62,6 +65,9 @@ class Auth extends CompressableService
 	{ 
 		// Вызовем родительсикй метод
 		parent::init( $params );
+
+//        $this->user = null;
+//        $this->authorized = false;
 		
 		// Получим корень сайта
 		$url_base = url()->base();	
@@ -99,13 +105,17 @@ class Auth extends CompressableService
 			// Если необходима принудительная авторизация - перейдем к форме авторизации, если мы уже не в ней
 			else if( $this->force && !in_array( url()->module(), array( $this->id, 'auth', 'resourcerouter' )))
 			{
-		
-				// Сохраним требуемую пользователем страницу в сессию
-				// что бы после авторизации вернуть пользователя на эту страницу
-				$_SESSION['__SamsonAuth__LP__'] = $_SERVER['REQUEST_URI'];
-		
-				// Выполним переадресацию на контроллер авторизации
-				url()->redirect( $this->id );
+                // Если указан обработчик инициализации модуля - выполним его
+                if( function_exists($this->force_handler) ) {
+                    call_user_func($this->force_handler);
+                } else {
+                    // Сохраним требуемую пользователем страницу в сессию
+                    // что бы после авторизации вернуть пользователя на эту страницу
+                    $_SESSION['__SamsonAuth__LP__'] = $_SERVER['REQUEST_URI'];
+
+                    // Выполним переадресацию на контроллер авторизации
+                    url()->redirect( $this->id );
+                }
 			}
 		}
 		// Без авторизации - никуда
@@ -292,5 +302,12 @@ class Auth extends CompressableService
 				$this->user->save();
 			}
 		}		
-	}	
+	}
+
+    /** Обработчик сериализации объекта */
+    public function __sleep()
+    {
+        // Remove all unnessesary fields from serialization
+        return array_diff( parent::__sleep(), array( 'authorized', 'user' ));
+    }
 }
