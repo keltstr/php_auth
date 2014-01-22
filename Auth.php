@@ -38,6 +38,9 @@ class Auth extends CompressableService
     /** Флаг авторизирован ли пользователь в системе */
     public $authorized = FALSE;
 
+    /** Collection of modules that can ignore forced authorization */
+    public $allow = array( 'auth2', 'auth', 'resourcerouter' );
+
     /**
      * Указатель на текущего пользователь
      * @var \samson\activerecord\dbRecord
@@ -97,7 +100,7 @@ class Auth extends CompressableService
 				$this->login( $_COOKIE[$url_base.'_cookie_md5Email'], $_COOKIE[$url_base.'_cookie_md5Password'], $this->create_token('', TRUE));				
 			}
 			// Если необходима принудительная авторизация - перейдем к форме авторизации, если мы уже не в ней
-			else if( $this->force && !in_array( url()->module(), array( $this->id, 'auth', 'resourcerouter' )))
+			else if( $this->force && !in_array( url()->module(), $this->allow))
 			{
 		
 				// Сохраним требуемую пользователем страницу в сессию
