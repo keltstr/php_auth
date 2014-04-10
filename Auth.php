@@ -71,11 +71,14 @@ class Auth extends CompressableService
     /** Prepare module environment */
     public function prepare()
     {
-        // Create special fields
-        db()->createField($this, $this->entity, 'email', 'VARCHAR(32)');
-        db()->createField($this, $this->entity, 'password', 'VARCHAR(32)');
-        db()->createField($this, $this->entity, 'online', 'INT(1)');
-        db()->createField($this, $this->entity, 'lastlogin', 'DATETIME');
+        // TODO: local classes load after prepare - they must load before prepares im modules
+        if (class_exists($this->entity)) {
+            // Create special fields
+            db()->createField($this, $this->entity, 'email', 'VARCHAR(32)');
+            db()->createField($this, $this->entity, 'password', 'VARCHAR(32)');
+            db()->createField($this, $this->entity, 'online', 'INT(1)');
+            db()->createField($this, $this->entity, 'lastlogin', 'DATETIME');
+        }
     }
 
     /** @see \samson\core\ModuleConnector::init() */
@@ -231,6 +234,9 @@ class Auth extends CompressableService
      */
     public function authorize(&$user, $remember = false)
     {
+        // Store pointer to authorized user
+        $this->user = & $user;
+
         // Запишем в сессию указатель на авторизированного пользователя
         $_SESSION[ $this->session_marker ] = serialize( $this->user );
 
@@ -242,8 +248,8 @@ class Auth extends CompressableService
             return call_user_func($this->login_handler, $this->user );
         } else { // Выполним стандартные действия
             // Отметим что пользователь вошел в систему
-            $this->user->Online = 1;
-            $this->user->LastLogin = date('Y-m-d H:i:s');
+            $this->user[$this->online] = 1;
+            $this->user[$this->lastlogin] = date('Y-m-d H:i:s');
             $this->user->save();
         }
 
