@@ -18,8 +18,7 @@ class Auth extends CompressableService
     /** Список модулей от которых завист данный модуль */
     protected $requirements = array
     (
-        'ActiveRecord',
-        'SamsonJS',
+        'activerecord',        
         'md5'
     );
 

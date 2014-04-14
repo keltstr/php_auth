@@ -1,1 +1,1 @@
-{"name":"samsonos/auth2","author":"Vitaly Iegorov <egorov@samsonos.com>","version":"0.0.1","require":{"ActiveRecord":"*.*.*","SamsonJS":"*.*.*","md5":"*.*.*"}}
+{"name":"samsonos/auth","author":"Vitaly Iegorov <egorov@samsonos.com>","version":"0.0.1","require":{"samsonos/activerecord":"dev-master","samsonos/js_md5":"dev-master"},"license":"Open Software License (\"OSL\") v 3.0\n","homepage":"http://samsonos.com/"}
