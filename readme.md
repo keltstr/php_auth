@@ -1,5 +1,3 @@
-Auth # SamsonPHP 
+Basic authorization module for [SamsonPHP](http://samsonphp.com) framework
 
-Basic authorization module
-
-egorov@samsonos.com
+Developed by [SamsonOS](http://samsonos.com/)
